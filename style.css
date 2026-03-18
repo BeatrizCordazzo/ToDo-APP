@@ -1,0 +1,534 @@
+/* ==========================================================================
+   Diseno base
+   ========================================================================== */
+:root {
+    --font-base: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --color-bg: #f5f7fb;
+    --color-panel: #ffffff;
+    --color-panel-soft: #f8fafc;
+    --color-card: #ffffff;
+    --color-card-muted: #eef2ff;
+    --color-primary: #2563eb;
+    --color-primary-strong: #1d4ed8;
+    --color-accent: #f97316;
+    --color-text: #0f172a;
+    --color-text-strong: #0f172a;
+    --color-text-muted: #475467;
+    --color-border: rgba(15, 23, 42, 0.08);
+    --color-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --transition-base: 220ms ease;
+    --container-width: min(960px, calc(100% - 3rem));
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-base);
+    color: var(--color-text);
+    background: radial-gradient(circle at top, rgba(37, 99, 235, 0.12), rgba(255, 255, 255, 0) 45%),
+                linear-gradient(180deg, #f9fbff, #eef2ff 40%, #e2e8f0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem 3rem;
+    gap: 2rem;
+}
+
+/* ==========================================================================
+   Paginas de autenticacion
+   ========================================================================== */
+
+body.auth-page {
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-card h1 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.65rem);
+}
+
+.auth-card p {
+    text-align: center;
+}
+
+/* ==========================================================================
+   Cabecera y hero
+   ========================================================================== */
+
+header {
+    width: 100%;
+    background: linear-gradient(125deg, #ffffff, #eef2ff 60%, #dbeafe);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2.25rem;
+    box-shadow: var(--color-shadow);
+    max-width: var(--container-width);
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-text-strong);
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+header h1::before {
+    content: '';
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 0.85rem;
+    background: radial-gradient(circle at 25% 25%, var(--color-primary), var(--color-primary-strong));
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
+    display: inline-flex;
+}
+
+/* ==========================================================================
+   Tipografia y estructura de pagina
+   ========================================================================== */
+
+body > h1 {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--color-text-strong);
+    text-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+body > p,
+body > a,
+body > section,
+body > form {
+    width: 100%;
+    max-width: var(--container-width);
+}
+
+p {
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--transition-base), transform var(--transition-base);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-primary-strong);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Formularios
+   ========================================================================== */
+
+form {
+    background: var(--color-card);
+    color: #101828;
+    padding: 2.5rem 2.75rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+form br {
+    display: none;
+}
+
+form label {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #475467;
+    font-weight: 600;
+}
+
+form input[type="email"],
+form input[type="text"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+    border: 1px solid #d0d5dd;
+    border-radius: 0.85rem;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+    background: #fff;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-strong);
+    box-shadow: 0 0 0 4px rgba(45, 144, 255, 0.2);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: #94a3b8;
+}
+
+button,
+form button[type="submit"] {
+    border: none;
+    border-radius: 0.9rem;
+    background: linear-gradient(120deg, var(--color-primary), var(--color-primary-strong));
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.95rem 1.25rem;
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: 0 20px 35px rgba(37, 99, 235, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover,
+button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 30px 45px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary,
+a.btn-primary {
+    border: none;
+    border-radius: 0.9rem;
+    background: linear-gradient(120deg, var(--color-primary), var(--color-primary-strong));
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.95rem 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 20px 35px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary,
+a.btn-secondary {
+    border-radius: 0.9rem;
+    border: 1px solid rgba(15, 23, 42, 0.15);
+    background: #fff;
+    color: var(--color-text);
+    font-weight: 600;
+    padding: 0.95rem 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), color var(--transition-base);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible,
+a.btn-secondary:hover,
+a.btn-secondary:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
+    color: var(--color-primary-strong);
+}
+
+/* ==========================================================================
+   Dashboard
+   ========================================================================== */
+
+.dashboard-intro,
+.task-composer {
+    width: 100%;
+    max-width: var(--container-width);
+    background: var(--color-panel);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--color-shadow);
+    padding: 2.5rem 3rem;
+}
+
+.dashboard-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary-strong);
+    margin: 0;
+}
+
+.intro-copy {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.task-composer {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.task-composer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.task-composer__helper {
+    margin: 0;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.task-form {
+    background: var(--color-panel-soft);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.25rem;
+    box-shadow: none;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row--actions {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.form-row--actions a,
+.form-row--actions button {
+    min-width: 150px;
+}
+
+/* ==========================================================================
+   Tarjetas y paneles (dashboard)
+   ========================================================================== */
+
+.dashboard-panel,
+body > p + a,
+body > a[href*="logout"] {
+    background: var(--color-panel);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+.dashboard-panel h2 {
+    margin-top: 0;
+    color: var(--color-text-strong);
+    letter-spacing: 0.04em;
+}
+
+body > a[href*="logout"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    background: linear-gradient(120deg, #fb7185, #f97316);
+    box-shadow: 0 20px 35px rgba(249, 115, 22, 0.35);
+    margin-top: 1rem;
+}
+
+body > a[href*="logout"]:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+hr {
+    width: 100%;
+    max-width: var(--container-width);
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.25), transparent);
+    margin-top: auto;
+}
+
+footer {
+    width: 100%;
+    max-width: var(--container-width);
+    padding: 1.75rem 0 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Estados y ayudas
+   ========================================================================== */
+
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: 0.85rem;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.alert--success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #15803d;
+}
+
+.alert--error {
+    background: rgba(248, 113, 113, 0.15);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #b91c1c;
+}
+
+/* ==========================================================================
+   Tablas y listas (para tareas futuras)
+   ========================================================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-card);
+    color: #111827;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 30px 50px rgba(4, 7, 18, 0.15);
+}
+
+table th,
+table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+table th {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    color: #475467;
+    background: var(--color-card-muted);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+ul li {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 0.85rem;
+    padding: 0.85rem 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+ul li:hover {
+    border-color: rgba(37, 99, 235, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Responsividad
+   ========================================================================== */
+
+@media (max-width: 640px) {
+    body {
+        padding: 0 1.25rem 2.5rem;
+    }
+
+    header,
+    body > h1,
+    body > form,
+    body > p,
+    body > a,
+    hr,
+    footer {
+        max-width: 100%;
+    }
+
+    form {
+        padding: 2rem 1.75rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    button,
+    body > a[href*="logout"] {
+        width: 100%;
+    }
+
+    .task-composer__header {
+        flex-direction: column;
+    }
+
+    .form-row--actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

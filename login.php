@@ -1,21 +1,28 @@
+<?php
+session_start(); // without this, php can't access the user's session data
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Login</h1>
-    <form action="actions/login_action.php" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+<body class="auth-page">
+    <div class="auth-card">
+        <h1>Login</h1>
+        <form action="actions/login_action.php" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
 
-        <button type="submit">Login</button>
-    </form>
-    <p><a href="register.php">Don't have an account? Register here.</a></p>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="register.php">Don't have an account? Register here.</a></p>
+    </div>
 </body>
 </html>
