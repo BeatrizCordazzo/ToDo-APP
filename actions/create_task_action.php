@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user_id = $_SESSION['user_id']; // Get the user ID from the session
 
+    $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, description) VALUES (?, ?, ?)");
     $stmt->execute([$user_id, $title, $description]);
 
-    header("Location: dashboard.php"); // Redirect to the dashboard after creating the task
+    header("Location: ../dashboard.php"); // Redirect to the dashboard after creating the task
     exit();
 }
 
