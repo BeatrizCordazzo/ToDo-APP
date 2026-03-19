@@ -1,11 +1,12 @@
 <?php
 
-$dsn = getenv('DB_DSN') ?: "mysql:host=localhost;dbname=todo_app";
-$username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASS') ?: '1234';
+$host='localhost'; // Database host
+$dbname='todo_app'; // Database name
+$username='root'; // Database username
+$password='1234'; // Database password
 
 try {
-    $pdo = new PDO($dsn, $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
